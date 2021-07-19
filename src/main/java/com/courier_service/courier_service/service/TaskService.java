@@ -6,6 +6,7 @@ import com.courier_service.courier_service.repo.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +22,12 @@ public class TaskService {
         if (orderNumber == null) {
             return taskRepository.findAll();
         } else {
-            return Stream.of(taskRepository.findTaskByOrderNumber(orderNumber)).collect(Collectors.toList());
+            var result = taskRepository.findTaskByOrderNumber(orderNumber);
+            if(result != null) {
+                return Stream.of(taskRepository.findTaskByOrderNumber(orderNumber)).collect(Collectors.toList());
+            } else {
+                return new ArrayList<Task>();
+            }
         }
     }
 

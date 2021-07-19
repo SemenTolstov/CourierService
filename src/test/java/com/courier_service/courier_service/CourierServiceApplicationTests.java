@@ -69,7 +69,7 @@ class CourierServiceApplicationTests {
     }
 
     @Test
-    void shouldCatchException() {
+    void shouldCatchExceptionWithRetryOrderNumber() {
         Exception exception = assertThrows(ItemAlreadyExistException.class, () -> {
             Task taskFour = new Task();
             taskFour.setNumberOfOrder(orderNumberOne);
@@ -79,5 +79,10 @@ class CourierServiceApplicationTests {
         String expectedMessage = "Item already exist";
         String actualMessage = exception.getMessage();
         Assert.isTrue(expectedMessage.equals(actualMessage));
+    }
+
+    @Test
+    void shouldReturnEmptyListUseSearch() {
+        Assert.isTrue(taskService.getTasks(111).isEmpty());
     }
 }
