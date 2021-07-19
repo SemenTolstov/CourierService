@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Номер заказа</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Введите номер заказа</h1>
+    <form action="#" th:action="@{/task}" th:object="${task}" method="post">
+        <p>Номер заказа: <input type="text" th:field="*{numberOfOrder}"/></p>
+        <p><input type="submit" value="Не успеваю"/> <input type="reset" value="Сбросить"/></p>
+    </form>
+    <a href="/operator">Оператор</a>
+</body>
+</html>

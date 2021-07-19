@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Задания</title>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+table {
+  border-spacing: 15px;
+}
+</style>
+</head>
+<body>
+<h1>Задания</h1>
+<form th:action="@{/operator}" method="get">
+    <input id="txtSearch" type="number" name="orderNumber">
+    <button type="submit">Найти</button>
+</form>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id задания</th>
+        <th>Номер заказа</th>
+        <th>Дата добавления задания</th>
+    </tr>
+    </thead>
+    <tbody th:each="task : ${tasks}">
+    <tr>
+        <td th:text=${task.id}></td>
+        <td th:text="${task.numberOfOrder}"></td>
+        <td th:text="${task.dateOfAddingTask}"></td>
+    </tr>
+    </tbody>
+</table>
+<br><br>
+<a href="/operator">Все задания</a> <br>
+<a href="/task">Добавить задание</a>
+</body>
+</html>
