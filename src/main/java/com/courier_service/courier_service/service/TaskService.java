@@ -23,7 +23,7 @@ public class TaskService {
             return taskRepository.findAll();
         } else {
             var result = taskRepository.findTaskByOrderNumber(orderNumber);
-            if(result != null) {
+            if (result != null) {
                 return Stream.of(taskRepository.findTaskByOrderNumber(orderNumber)).collect(Collectors.toList());
             } else {
                 return new ArrayList<Task>();
