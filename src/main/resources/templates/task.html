@@ -8,7 +8,7 @@
 <body>
 <h1>Введите номер заказа</h1>
     <form action="#" th:action="@{/task}" th:object="${task}" method="post">
-        <p>Номер заказа: <input type="text" th:field="*{numberOfOrder}"/></p>
+        <p>Номер заказа: <input type="number" th:field="*{numberOfOrder}"/></p>
         <p><input type="submit" value="Не успеваю"/> <input type="reset" value="Сбросить"/></p>
     </form>
     <a href="/operator">Оператор</a>

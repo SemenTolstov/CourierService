@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
@@ -32,10 +30,8 @@ class CourierServiceApplicationTests {
     public void setUp() {
         Task taskOne = new Task();
         taskOne.setNumberOfOrder(orderNumberOne);
-        taskOne.setDateOfAddingTask(new Date());
         Task taskTwo = new Task();
         taskTwo.setNumberOfOrder(orderNumberTwo);
-        taskTwo.setDateOfAddingTask(new Date());
         taskRepository.save(taskOne);
         taskRepository.save(taskTwo);
     }
@@ -61,7 +57,6 @@ class CourierServiceApplicationTests {
     void shouldAddTaskWithTaskService() {
         Task taskThree = new Task();
         taskThree.setNumberOfOrder(orderNumberThree);
-        taskThree.setDateOfAddingTask(new Date());
         taskService.save(taskThree);
 
         Assert.isTrue(taskRepository.findTaskByOrderNumber(orderNumberThree).getNumberOfOrder()
@@ -73,7 +68,6 @@ class CourierServiceApplicationTests {
         Exception exception = assertThrows(ItemAlreadyExistException.class, () -> {
             Task taskFour = new Task();
             taskFour.setNumberOfOrder(orderNumberOne);
-            taskFour.setDateOfAddingTask(new Date());
             taskService.save(taskFour);
         });
         String expectedMessage = "Item already exist";

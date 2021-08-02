@@ -27,6 +27,6 @@ public class Task {
 
 
     public Task() {
-
+        dateOfAddingTask = new Date();
     }
 }

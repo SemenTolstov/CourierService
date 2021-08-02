@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -32,13 +31,10 @@ public class TaskService {
     }
 
     public void save(Task inputTask) {
-        Task newTask = new Task();
-        newTask.setDateOfAddingTask(new Date());
-        newTask.setNumberOfOrder(inputTask.getNumberOfOrder());
         if (taskRepository.findTaskByOrderNumber(inputTask.getNumberOfOrder()) != null) {
             throw new ItemAlreadyExistException("Item already exist");
         }
-        taskRepository.save(newTask);
+        taskRepository.save(inputTask);
     }
 }
 
